@@ -1,6 +1,7 @@
 package com.allancaine.inputtest;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -11,16 +12,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class InputTestActivity extends FragmentActivity {
+public class InputTestPagerActivity extends FragmentActivity {
 
+    public static final String EXTRA_POSITION = "com.allancaine.inputtest.extra_position";
+
+
+    private PageSwipeAdapter mPageSwipeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_test);
+        mPageSwipeAdapter = new PageSwipeAdapter(getSupportFragmentManager(), ResourceFinder.get(this));
         ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
-        viewPager.setAdapter(new PageSwipeAdapter(getSupportFragmentManager(),
-                new ResourceFinder()));
+        viewPager.setAdapter(mPageSwipeAdapter);
+        Intent i = getIntent();
+        int position = i.getIntExtra(EXTRA_POSITION, 0);
+        viewPager.setCurrentItem(position);
+
     }
 
     @Override
@@ -56,7 +65,7 @@ public class InputTestActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return PageFragment.newInstance(mResourceFinder.getResource(position));
+            return PageFragment.newInstance(mResourceFinder.getResource(position).getLayout());
         }
 
         @Override

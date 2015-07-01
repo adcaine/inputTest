@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="basic_input_title">Basic Input</string>
+    <string name="password_input_title">Password Input</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.allancaine.inputtest;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
@@ -7,16 +9,33 @@ import java.util.ArrayList;
  */
 public class ResourceFinder {
 
-    private ArrayList<Integer> mPageResources;
+    private ArrayList<Page> mPageResources;
+    private Context mContext;
+    private static ResourceFinder sResourceFinder;
 
-    public ResourceFinder(){
-        mPageResources = new ArrayList<>();
-        mPageResources.add(R.layout.basic_input_layout);
-        mPageResources.add(R.layout.password_input_layout);
+    public static ResourceFinder get(Context context){
+        if(sResourceFinder == null){
+            sResourceFinder = new ResourceFinder(context);
+        }
+        return sResourceFinder;
     }
 
-    public int getResource(int position){
+    private ResourceFinder(Context c){
+        mContext = c.getApplicationContext();
+
+        mPageResources = new ArrayList<>();
+        mPageResources.add(new Page(mContext.getString(R.string.basic_input_title),
+                R.layout.basic_input_layout));
+        mPageResources.add(new Page(mContext.getString(R.string.password_input_title),
+                R.layout.password_input_layout));
+    }
+
+    public Page getResource(int position){
         return mPageResources.get(position);
+    }
+
+    public ArrayList<Page> getPageResources(){
+        return mPageResources;
     }
 
     public int size(){
