@@ -8,8 +8,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Basic Text Entry"
+        android:text="@string/basic_input_title"
         android:id="@+id/textView"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/default_input_header"
+        android:id="@+id/textView9"/>
 
     <EditText
         android:layout_width="fill_parent"

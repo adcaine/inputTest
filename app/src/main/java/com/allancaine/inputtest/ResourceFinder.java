@@ -28,6 +28,8 @@ public class ResourceFinder {
                 R.layout.basic_input_layout));
         mPageResources.add(new Page(mContext.getString(R.string.password_input_title),
                 R.layout.password_input_layout));
+        mPageResources.add(new Page(mContext.getString(R.string.date_time_phone_title),
+                R.layout.date_time_phone_layout));
     }
 
     public Page getResource(int position){

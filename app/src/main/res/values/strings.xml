@@ -5,4 +5,12 @@
     <string name="action_settings">Settings</string>
     <string name="basic_input_title">Basic Input</string>
     <string name="password_input_title">Password Input</string>
+    <string name="date_time_phone_title">Date, Time and Phone</string>
+    <string name="default_input_header">Default Input</string>
+    <string name="hidden_password_input_header">Hidden Password Input</string>
+    <string name="hidden_numeric_input_header">Hidden Numeric Password Input</string>
+    <string name="date_and_time_input_header">Date and Time Input</string>
+    <string name="date_input_header">Date Input</string>
+    <string name="time_input_header">Time Input</string>
+    <string name="phone_input_header">Phone Input</string>
 </resources>
