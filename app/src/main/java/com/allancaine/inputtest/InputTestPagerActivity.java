@@ -26,10 +26,34 @@ public class InputTestPagerActivity extends FragmentActivity {
         mPageSwipeAdapter = new PageSwipeAdapter(getSupportFragmentManager(), ResourceFinder.get(this));
         ViewPager viewPager = (ViewPager)findViewById(R.id.view_pager);
         viewPager.setAdapter(mPageSwipeAdapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setSubtitle(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         Intent i = getIntent();
         int position = i.getIntExtra(EXTRA_POSITION, 0);
         viewPager.setCurrentItem(position);
+        setSubtitle(position);
 
+    }
+
+    private void setSubtitle(int position){
+        ResourceFinder resourceFinder = ResourceFinder.get(this);
+        String subtitle = resourceFinder.getResource(position).getResourceTitle();
+        ActionBar actionBar = getActionBar();
+        actionBar.setSubtitle(subtitle);
     }
 
     @Override
